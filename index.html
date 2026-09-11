@@ -166,9 +166,9 @@
                 <option value="CMHC">Clinical Mental Health Counseling (M.S.)</option>
                 <option value="EDM_MS">Educational Media M.S.</option>
                 <option value="HPI_CERT">HPI Certificate</option>
-                <option value="IDD_CERT">IDD Certificate</option>
                 <option value="IDD_MS">IDD M.S. Track</option>
                 <option value="IDD_PHD">IDD Ph.D. Track</option>
+                <option value="IDD_CERT">IDD Certificate</option>
                 <option value="LIB_MED">Library Media P-12 (M.Ed / Cert)</option>
                 <option value="SCHOOL_COUNSEL">School Counseling (M.Ed.)</option>
             </select>
@@ -199,7 +199,7 @@
 
     <script type="text/javascript">
         // Replace with your GitHub Username and Repository Name
-        const GITHUB_BASE_URL = "https://raw.githubusercontent.com/johnnycholmc/CINS/main/";
+        const GITHUB_BASE_URL = "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/main/";
 
         // Color Palette Definitions
         const COLORS = {
@@ -321,7 +321,7 @@
             ]
         };
 
-        // Program Categories Mapping Definitions (Updated per Instructions)
+        // Program Categories Mapping Definitions
         const PROGRAM_CATEGORIES = {
             ALL: {
                 title: 'Department Curriculum Tracks',
@@ -359,6 +359,12 @@
                     CAPSTONE: { name: 'Culminating Capstone Experience', color: COLORS.red }
                 }
             },
+            IDD_CERT: {
+                title: 'IDD Certificate Course Groups',
+                groups: {
+                    CORE_COURSE: { name: 'Core Courses', color: COLORS.green }
+                }
+            },
             IDD_MS: {
                 title: 'IDD M.S. Curriculum Groups',
                 groups: {
@@ -374,12 +380,6 @@
                     RESEARCH: { name: 'Research', color: COLORS.yellow },
                     SUPP_CW: { name: 'Supporting Coursework', color: COLORS.blue },
                     DISSERTATION: { name: 'Dissertation', color: COLORS.red }
-                }
-            },
-           IDD_CERT: {
-                title: 'IDD Certificate Course Groups',
-                groups: {
-                    CORE_COURSE: { name: 'Core Courses', color: COLORS.green }
                 }
             },
             LIB_MED: {
@@ -487,7 +487,7 @@
             const prog = document.getElementById('program-filter').value;
             const progConfig = PROGRAM_CATEGORIES[prog] || PROGRAM_CATEGORIES.ALL;
 
-            // Update Download Buttons Section
+            // Update Preview Buttons Section
             const docContainer = document.getElementById('doc-buttons');
             const docTitle = document.getElementById('doc-title');
             docContainer.innerHTML = '';
@@ -495,15 +495,18 @@
             const docs = PROGRAM_DOCS[prog] || [];
             docTitle.innerText = prog === 'ALL' ? 'All Course Documents' : 'Program Documents';
 
-            const svgIcon = `<svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>`;
+            const svgIcon = `<svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>`;
 
             docs.forEach(doc => {
+                const rawUrl = GITHUB_BASE_URL + doc.name;
+                const previewUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(rawUrl)}`;
+                
                 const btn = document.createElement('a');
                 btn.className = 'btn-download';
-                btn.href = GITHUB_BASE_URL + doc.name;
+                btn.href = previewUrl;
                 btn.target = '_blank';
-                btn.title = `View / Download ${doc.name}`;
-                btn.innerHTML = `${svgIcon} ${doc.label}`;
+                btn.title = `Preview ${doc.name} online`;
+                btn.innerHTML = `${svgIcon} Preview ${doc.label}`;
                 docContainer.appendChild(btn);
             });
 
