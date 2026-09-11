@@ -80,14 +80,14 @@
         }
         .btn-container {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             gap: 8px;
         }
         .btn-link {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 6px;
+            justify-content: flex-start;
+            gap: 8px;
             background-color: #0284c7;
             color: #ffffff;
             text-decoration: none;
@@ -98,6 +98,10 @@
             transition: background-color 0.2s ease;
             border: none;
             cursor: pointer;
+            text-align: left;
+            white-space: normal;
+            line-height: 1.35;
+            width: 100%;
         }
         .btn-link:hover {
             background-color: #0369a1;
@@ -109,9 +113,10 @@
             background-color: #0f766e;
         }
         .btn-link svg {
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
             fill: currentColor;
+            flex-shrink: 0;
         }
         .legend {
             display: flex;
@@ -206,7 +211,7 @@
 
     <script type="text/javascript">
         // Replace with your GitHub Username and Repository Name
-        const GITHUB_BASE_URL = "https://raw.githubusercontent.com/johnnycholmc/CINS/main/";
+        const GITHUB_BASE_URL = "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/main/";
 
         // Program Web URLs
         const PROGRAM_URLS = {
@@ -220,6 +225,49 @@
             IDD_PHD: "https://www.southalabama.edu/colleges/ceps/cins/idd/",
             IDD_CERT: "https://www.southalabama.edu/colleges/ceps/cins/idd/",
             HPI_CERT: "https://www.southalabama.edu/colleges/ceps/cins/hpi-cert.html"
+        };
+
+        // Option 1 Novice-Friendly Document Mapping
+        const PROGRAM_DOCS = {
+            ALL: [
+                { name: 'cedscha.pdf', label: 'School Counseling Checklist (M.Ed.)' },
+                { name: 'cmhcms.pdf', label: 'Clinical Mental Health Counseling Checklist (M.S.)' },
+                { name: 'emtms.pdf', label: 'Educational Media and Technology Checklist (M.S.)' },
+                { name: 'hpicert.pdf', label: 'Human Performance Improvement Checklist (Certificate)' },
+                { name: 'iddcert.pdf', label: 'Instructional Design and Development Checklist (Certificate)' },
+                { name: 'iddms.pdf', label: 'Instructional Design and Development Checklist (M.S.)' },
+                { name: 'iddnoms.pdf', label: 'Instructional Design Non-Degree Checklist' },
+                { name: 'iddphd.pdf', label: 'Instructional Design and Development Checklist (Ph.D.)' },
+                { name: 'lm.pdf', label: 'Library Media P-12 Checklist (M.Ed.)' },
+                { name: 'lmcert.pdf', label: 'Library Media P-12 Checklist (Certificate)' }
+            ],
+            CCP_PHD: [],
+            CMHC: [
+                { name: 'cmhcms.pdf', label: 'Clinical Mental Health Counseling Checklist (M.S.)' }
+            ],
+            EDM_MS: [
+                { name: 'emtms.pdf', label: 'Educational Media and Technology Checklist (M.S.)' }
+            ],
+            HPI_CERT: [
+                { name: 'hpicert.pdf', label: 'Human Performance Improvement Checklist (Certificate)' }
+            ],
+            IDD_CERT: [
+                { name: 'iddcert.pdf', label: 'Instructional Design and Development Checklist (Certificate)' },
+                { name: 'iddnoms.pdf', label: 'Instructional Design Non-Degree Checklist' }
+            ],
+            IDD_MS: [
+                { name: 'iddms.pdf', label: 'Instructional Design and Development Checklist (M.S.)' }
+            ],
+            IDD_PHD: [
+                { name: 'iddphd.pdf', label: 'Instructional Design and Development Checklist (Ph.D.)' }
+            ],
+            LIB_MED: [
+                { name: 'lm.pdf', label: 'Library Media P-12 Checklist (M.Ed.)' },
+                { name: 'lmcert.pdf', label: 'Library Media P-12 Checklist (Certificate)' }
+            ],
+            SCHOOL_COUNSEL: [
+                { name: 'cedscha.pdf', label: 'School Counseling Checklist (M.Ed.)' }
+            ]
         };
 
         // Color Palette Definitions
@@ -299,49 +347,6 @@
             { id: 'CED 595', code: 'CED 595', credits: 6, name: 'Internship in School Counseling', cat: { ALL: 'FIELD', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['SCHOOL_COUNSEL'] },
             { id: 'CED 597', code: 'CED 597', credits: 6, name: 'Internship in Clinical Mental Health', cat: { ALL: 'FIELD', CMHC: 'MAJOR_CORE' }, programs: ['CMHC'] }
         ];
-
-        // Documents Mapping Config
-        const PROGRAM_DOCS = {
-            ALL: [
-                { name: 'cedscha.pdf', label: 'cedscha' },
-                { name: 'cmhcms.pdf', label: 'cmhcms' },
-                { name: 'emtms.pdf', label: 'emtms' },
-                { name: 'hpicert.pdf', label: 'hpicert' },
-                { name: 'iddcert.pdf', label: 'iddcert' },
-                { name: 'iddms.pdf', label: 'iddms' },
-                { name: 'iddnoms.pdf', label: 'iddnoms' },
-                { name: 'iddphd.pdf', label: 'iddphd' },
-                { name: 'lm.pdf', label: 'lm' },
-                { name: 'lmcert.pdf', label: 'lmcert' }
-            ],
-            CCP_PHD: [],
-            CMHC: [
-                { name: 'cmhcms.pdf', label: 'cmhcms' }
-            ],
-            EDM_MS: [
-                { name: 'emtms.pdf', label: 'emtms' }
-            ],
-            HPI_CERT: [
-                { name: 'hpicert.pdf', label: 'hpicert' }
-            ],
-            IDD_CERT: [
-                { name: 'iddcert.pdf', label: 'iddcert' },
-                { name: 'iddnoms.pdf', label: 'iddnoms' }
-            ],
-            IDD_MS: [
-                { name: 'iddms.pdf', label: 'iddms' }
-            ],
-            IDD_PHD: [
-                { name: 'iddphd.pdf', label: 'iddphd' }
-            ],
-            LIB_MED: [
-                { name: 'lm.pdf', label: 'lm' },
-                { name: 'lmcert.pdf', label: 'lmcert' }
-            ],
-            SCHOOL_COUNSEL: [
-                { name: 'cedscha.pdf', label: 'cedscha' }
-            ]
-        };
 
         // Program Categories Mapping Definitions
         const PROGRAM_CATEGORIES = {
@@ -514,7 +519,7 @@
             const docTitle = document.getElementById('doc-title');
             docContainer.innerHTML = '';
             
-            docTitle.innerText = prog === 'ALL' ? 'All Course Resources' : 'Program Resources';
+            docTitle.innerText = prog === 'ALL' ? 'All Course Checklists' : 'Program Resources';
 
             const webIcon = `<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>`;
             const downloadIcon = `<svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>`;
@@ -539,8 +544,8 @@
                 docBtn.className = 'btn-link';
                 docBtn.href = downloadUrl;
                 docBtn.download = doc.name;
-                docBtn.title = `Download ${doc.name} directly`;
-                docBtn.innerHTML = `${downloadIcon} Doc: ${doc.label}`;
+                docBtn.title = `Download ${doc.label}`;
+                docBtn.innerHTML = `${downloadIcon} ${doc.label}`;
                 docContainer.appendChild(docBtn);
             });
 
