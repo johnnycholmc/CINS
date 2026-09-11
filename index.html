@@ -172,8 +172,7 @@
 
         <div class="filter-group">
             <label for="program-filter">Filter by Program</label>
-            <select id="program-filter" onchange="filterMap()">
-                <option value="ALL">Show All CINS Programs</option>
+            <select id="program-filter" onchange="filterMap()">            
                 <option value="CCP_PHD">Clinical and Counseling Psychology (Ph.D.)</option>
                 <option value="CMHC">Clinical Mental Health Counseling (M.S.)</option>
                 <option value="EDM_MS">Educational Media and Technology (M.S.)</option>
@@ -183,6 +182,7 @@
                 <option value="IDD_CERT">Instructional Design and Development (Certificate)</option>
                 <option value="LIB_MED">Library Media P-12 (M.Ed. / Certificate)</option>
                 <option value="SCHOOL_COUNSEL">School Counseling (M.Ed.)</option>
+                <option value="ALL">Show All CINS Programs</option>
             </select>
         </div>
 
@@ -211,7 +211,7 @@
 
     <script type="text/javascript">
         // Replace with your GitHub Username and Repository Name
-        const GITHUB_BASE_URL = "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/main/";
+        const GITHUB_BASE_URL = "https://raw.githubusercontent.com/johnnycholmc/CINS/main/";
 
         // Program Web URLs
         const PROGRAM_URLS = {
