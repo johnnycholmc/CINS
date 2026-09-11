@@ -21,7 +21,7 @@
             overflow: hidden;
         }
         #sidebar {
-            width: 360px;
+            width: 380px;
             background-color: #1e293b;
             border-right: 1px solid #334155;
             padding: 20px;
@@ -169,14 +169,14 @@
             <label for="program-filter">Filter by Program</label>
             <select id="program-filter" onchange="filterMap()">
                 <option value="ALL">Show All CINS Programs</option>
-                <option value="CCP_PHD">Clinical & Counseling Psychology (Ph.D.)</option>
+                <option value="CCP_PHD">Clinical and Counseling Psychology (Ph.D.)</option>
                 <option value="CMHC">Clinical Mental Health Counseling (M.S.)</option>
-                <option value="EDM_MS">Educational Media M.S.</option>
-                <option value="HPI_CERT">HPI Certificate</option>
-                <option value="IDD_MS">IDD M.S. Track</option>
-                <option value="IDD_PHD">IDD Ph.D. Track</option>
-                <option value="IDD_CERT">IDD Certificate</option>
-                <option value="LIB_MED">Library Media P-12 (M.Ed / Cert)</option>
+                <option value="EDM_MS">Educational Media and Technology (M.S.)</option>
+                <option value="HPI_CERT">Human Performance Improvement (Certificate)</option>
+                <option value="IDD_MS">Instructional Design and Development (M.S.)</option>
+                <option value="IDD_PHD">Instructional Design and Development (Ph.D.)</option>
+                <option value="IDD_CERT">Instructional Design and Development (Certificate)</option>
+                <option value="LIB_MED">Library Media P-12 (M.Ed. / Certificate)</option>
                 <option value="SCHOOL_COUNSEL">School Counseling (M.Ed.)</option>
             </select>
         </div>
@@ -238,7 +238,7 @@
         const rawNodes = [
             { id: 'EDM 510', code: 'EDM 510', credits: 3, name: 'Microcomputing Systems in Education', cat: { ALL: 'EDM_DIV', LIB_MED: 'EDM_CORE', EDM_MS: 'EDM_CORE' }, programs: ['EDM_MS', 'LIB_MED'] },
             { id: 'EDM 520', code: 'EDM 520', credits: 3, name: 'Computer Applications in Education', cat: { ALL: 'EDM_DIV', EDM_MS: 'EDM_CORE' }, programs: ['EDM_MS'] },
-            { id: 'EDM 530', code: 'EDM 530', credits: 3, name: 'Workshop for Ed Media', cat: { ALL: 'EDM_DIV', LIB_MED: 'EDM_CORE' }, programs: ['LIB_MED'] },
+            { id: 'EDM 530', code: 'EDM 530', credits: 3, name: 'Workshop for Educational Media', cat: { ALL: 'EDM_DIV', LIB_MED: 'EDM_CORE' }, programs: ['LIB_MED'] },
             { id: 'EDM 540', code: 'EDM 540', credits: 3, name: 'Curriculum Media for Children and Youth', cat: { ALL: 'EDM_DIV', LIB_MED: 'EDM_CORE' }, programs: ['LIB_MED'] },
             { id: 'EDM 580', code: 'EDM 580', credits: 3, name: 'Information Literacy', cat: { ALL: 'EDM_DIV', LIB_MED: 'EDM_CORE', EDM_MS: 'EDM_CORE' }, programs: ['EDM_MS', 'LIB_MED'] },
             { id: 'EDM 581', code: 'EDM 581', credits: 3, name: 'Media Center Management', cat: { ALL: 'EDM_DIV', LIB_MED: 'EDM_CORE' }, programs: ['LIB_MED'] },
@@ -250,19 +250,19 @@
             { id: 'EDF 515', code: 'EDF 515', credits: 3, name: 'Multicultural Education', cat: { ALL: 'EDM_DIV', LIB_MED: 'DIV_SUPP', SCHOOL_COUNSEL: 'ED_FOUND' }, programs: ['LIB_MED', 'SCHOOL_COUNSEL'] },
             { id: 'EPY 502', code: 'EPY 502', credits: 3, name: 'Psychology of Learning and Learners', cat: { ALL: 'PREREQ', LIB_MED: 'DIV_SUPP', EDM_MS: 'ED_PSYCH', IDD_MS: 'ADD_REQ', IDD_PHD: 'SUPP_CW', SCHOOL_COUNSEL: 'ED_FOUND' }, programs: ['EDM_MS', 'IDD_MS', 'IDD_PHD', 'LIB_MED', 'SCHOOL_COUNSEL'] },
             { id: 'SPE 500', code: 'SPE 500', credits: 3, name: 'Nature and Needs of Exceptional Children', cat: { ALL: 'EDM_DIV', SCHOOL_COUNSEL: 'ALSDE_PRE' }, programs: ['SCHOOL_COUNSEL'] },
-            { id: 'IDE 510', code: 'IDE 510', credits: 3, name: 'Educational Research and Evaluation', cat: { ALL: 'RESEARCH', LIB_MED: 'RES_EVAL', IDD_MS: 'ADD_REQ', IDD_PHD: 'RESEARCH', CMHC: 'REL_PROF', SCHOOL_COUNSEL: 'RES_EVAL', CCP_PHD: 'RESEARCH' }, programs: ['IDD_MS', 'IDD_PHD', 'LIB_MED', 'CMHC', 'SCHOOL_COUNSEL', 'CCP_PHD'] },
-            { id: 'IDE 620', code: 'IDE 620', credits: 3, name: 'Quantitative Methods I', cat: { ALL: 'RESEARCH', IDD_PHD: 'RESEARCH', CCP_PHD: 'RESEARCH' }, programs: ['IDD_PHD', 'CCP_PHD'] },
-            { id: 'IDE 621', code: 'IDE 621', credits: 3, name: 'Quantitative Methods II', cat: { ALL: 'RESEARCH', IDD_PHD: 'RESEARCH', CCP_PHD: 'RESEARCH' }, programs: ['IDD_PHD', 'CCP_PHD'] },
-            { id: 'IDE 630', code: 'IDE 630', credits: 3, name: 'Advanced Research Design', cat: { ALL: 'RESEARCH', IDD_PHD: 'RESEARCH', CCP_PHD: 'RESEARCH' }, programs: ['IDD_PHD', 'CCP_PHD'] },
-            { id: 'IDE 631', code: 'IDE 631', credits: 3, name: 'Qualitative Research', cat: { ALL: 'RESEARCH', IDD_PHD: 'RESEARCH', CCP_PHD: 'RESEARCH' }, programs: ['IDD_PHD', 'CCP_PHD'] },
-            { id: 'IDE 635', code: 'IDE 635', credits: 3, name: 'Advanced Measurement and Evaluation', cat: { ALL: 'RESEARCH', IDD_PHD: 'RESEARCH', CCP_PHD: 'RESEARCH' }, programs: ['IDD_PHD', 'CCP_PHD'] },
+            { id: 'IDE 510', code: 'IDE 510', credits: 3, name: 'Educational Research and Evaluation', cat: { ALL: 'RESEARCH', LIB_MED: 'RES_EVAL', IDD_MS: 'ADD_REQ', IDD_PHD: 'RESEARCH', CMHC: 'REL_PROF', SCHOOL_COUNSEL: 'RES_EVAL' }, programs: ['IDD_MS', 'IDD_PHD', 'LIB_MED', 'CMHC', 'SCHOOL_COUNSEL'] },
+            { id: 'IDE 620', code: 'IDE 620', credits: 3, name: 'Quantitative Methods I', cat: { ALL: 'RESEARCH', IDD_PHD: 'RESEARCH' }, programs: ['IDD_PHD'] },
+            { id: 'IDE 621', code: 'IDE 621', credits: 3, name: 'Quantitative Methods II', cat: { ALL: 'RESEARCH', IDD_PHD: 'RESEARCH' }, programs: ['IDD_PHD'] },
+            { id: 'IDE 630', code: 'IDE 630', credits: 3, name: 'Advanced Research Design', cat: { ALL: 'RESEARCH', IDD_PHD: 'RESEARCH' }, programs: ['IDD_PHD'] },
+            { id: 'IDE 631', code: 'IDE 631', credits: 3, name: 'Qualitative Research', cat: { ALL: 'RESEARCH', IDD_PHD: 'RESEARCH' }, programs: ['IDD_PHD'] },
+            { id: 'IDE 635', code: 'IDE 635', credits: 3, name: 'Advanced Measurement and Evaluation', cat: { ALL: 'RESEARCH', IDD_PHD: 'RESEARCH' }, programs: ['IDD_PHD'] },
             { id: 'IDE 660', code: 'IDE 660', credits: 3, name: 'Program Research and Evaluation', cat: { ALL: 'RESEARCH', HPI_CERT: 'SUPP_CW', IDD_MS: 'ADD_REQ', IDD_PHD: 'RESEARCH' }, programs: ['HPI_CERT', 'IDD_MS', 'IDD_PHD'] },
             { id: 'ISD 581', code: 'ISD 581', credits: 3, name: 'Hypermedia Tools', cat: { ALL: 'INST_CORE', EDM_MS: 'ISD_CORE', IDD_MS: 'CORE_COURSE' }, programs: ['EDM_MS', 'IDD_MS'] },
-            { id: 'ISD 610', code: 'ISD 610', credits: 3, name: 'Trends and Issues in IDD', cat: { ALL: 'INST_CORE', IDD_MS: 'CORE_COURSE', IDD_PHD: 'INST_CORE' }, programs: ['IDD_MS', 'IDD_PHD'] },
+            { id: 'ISD 610', code: 'ISD 610', credits: 3, name: 'Trends and Issues in Instructional Design and Development', cat: { ALL: 'INST_CORE', IDD_MS: 'CORE_COURSE', IDD_PHD: 'INST_CORE' }, programs: ['IDD_MS', 'IDD_PHD'] },
             { id: 'ISD 613', code: 'ISD 613', credits: 3, name: 'Instructional and Learning Strategies', cat: { ALL: 'INST_CORE', IDD_CERT: 'CORE_COURSE', IDD_MS: 'CORE_COURSE', IDD_PHD: 'INST_CORE' }, programs: ['IDD_CERT', 'IDD_MS', 'IDD_PHD'] },
             { id: 'ISD 621', code: 'ISD 621', credits: 3, name: 'Instructional Design', cat: { ALL: 'INST_CORE', HPI_CERT: 'CORE_COURSE', IDD_CERT: 'CORE_COURSE', IDD_MS: 'CORE_COURSE', IDD_PHD: 'INST_CORE' }, programs: ['HPI_CERT', 'IDD_CERT', 'IDD_MS', 'IDD_PHD'] },
             { id: 'ISD 622', code: 'ISD 622', credits: 3, name: 'Advanced Instructional Design', cat: { ALL: 'INST_CORE', IDD_CERT: 'CORE_COURSE', IDD_PHD: 'INST_CORE' }, programs: ['IDD_CERT', 'IDD_PHD'] },
-            { id: 'ISD 623', code: 'ISD 623', credits: 3, name: 'Advanced Research and Design for IDD', cat: { ALL: 'RESEARCH', IDD_PHD: 'RESEARCH' }, programs: ['IDD_PHD'] },
+            { id: 'ISD 623', code: 'ISD 623', credits: 3, name: 'Advanced Research and Design for Instructional Design', cat: { ALL: 'RESEARCH', IDD_PHD: 'RESEARCH' }, programs: ['IDD_PHD'] },
             { id: 'ISD 640', code: 'ISD 640', credits: 3, name: 'Needs Assessment', cat: { ALL: 'INST_CORE', HPI_CERT: 'CORE_COURSE', IDD_PHD: 'INST_CORE' }, programs: ['HPI_CERT', 'IDD_PHD'] },
             { id: 'ISD 641', code: 'ISD 641', credits: 3, name: 'Performance Systems Technology', cat: { ALL: 'INST_CORE', HPI_CERT: 'CORE_COURSE', IDD_MS: 'CORE_COURSE', IDD_PHD: 'INST_CORE' }, programs: ['HPI_CERT', 'IDD_MS', 'IDD_PHD'] },
             { id: 'ISD 651', code: 'ISD 651', credits: 3, name: 'Learning Theory and Technology', cat: { ALL: 'INST_CORE', IDD_PHD: 'INST_CORE' }, programs: ['IDD_PHD'] },
@@ -274,28 +274,28 @@
             { id: 'EDM 595A', code: 'EDM 595A', credits: 1, name: 'Library Media Internship A (School Setting)', cat: { ALL: 'FIELD', LIB_MED: 'INTERN' }, programs: ['LIB_MED'] },
             { id: 'EDM 595B', code: 'EDM 595B', credits: 1, name: 'Library Media Internship B', cat: { ALL: 'FIELD', LIB_MED: 'INTERN' }, programs: ['LIB_MED'] },
             { id: 'EDM 595C', code: 'EDM 595C', credits: 1, name: 'Library Media Internship C', cat: { ALL: 'FIELD', LIB_MED: 'INTERN' }, programs: ['LIB_MED'] },
-            { id: 'ISD 611', code: 'ISD 611', credits: 3, name: 'Macro-level Training & Perf Systems (Capstone)', cat: { ALL: 'FIELD', HPI_CERT: 'CAPSTONE', IDD_MS: 'FIELD_COURSE' }, programs: ['HPI_CERT', 'IDD_MS'] },
+            { id: 'ISD 611', code: 'ISD 611', credits: 3, name: 'Macro-level Training & Performance Systems (Capstone)', cat: { ALL: 'FIELD', HPI_CERT: 'CAPSTONE', IDD_MS: 'FIELD_COURSE' }, programs: ['HPI_CERT', 'IDD_MS'] },
             { id: 'ISD 642', code: 'ISD 642', credits: 3, name: 'Project Coordination', cat: { ALL: 'FIELD', HPI_CERT: 'CORE_COURSE', IDD_CERT: 'CORE_COURSE' }, programs: ['HPI_CERT', 'IDD_CERT'] },
-            { id: 'IDE 645', code: 'IDE 645', credits: 3, name: 'Adv Human Performance Improvement', cat: { ALL: 'FIELD', HPI_CERT: 'SUPP_CW' }, programs: ['HPI_CERT'] },
+            { id: 'IDE 645', code: 'IDE 645', credits: 3, name: 'Advanced Human Performance Improvement', cat: { ALL: 'FIELD', HPI_CERT: 'SUPP_CW' }, programs: ['HPI_CERT'] },
             { id: 'ISD 695', code: 'ISD 695', credits: 3, name: 'Doctoral Internship', cat: { ALL: 'FIELD', IDD_PHD: 'SUPP_CW' }, programs: ['IDD_PHD'] },
             { id: 'ISD 799', code: 'ISD 799', credits: 9, name: 'Research / Dissertation', cat: { ALL: 'FIELD', IDD_PHD: 'DISSERTATION' }, programs: ['IDD_PHD'] },
             { id: 'EPY 521', code: 'EPY 521', credits: 3, name: 'Human Development and Behavior', cat: { ALL: 'COUNSELING', CMHC: 'REL_PROF', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['CMHC', 'SCHOOL_COUNSEL'] },
             { id: 'EPY 555', code: 'EPY 555', credits: 3, name: 'Tests, Measurement and Evaluation', cat: { ALL: 'COUNSELING', CMHC: 'REL_PROF', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['CMHC', 'SCHOOL_COUNSEL'] },
-            { id: 'CED 560', code: 'CED 560', credits: 3, name: 'Diagnostic and Treatment Planning', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP', CCP_PHD: 'CLINICAL_CORE' }, programs: ['CMHC', 'SCHOOL_COUNSEL', 'CCP_PHD'] },
+            { id: 'CED 560', code: 'CED 560', credits: 3, name: 'Diagnostic and Treatment Planning', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['CMHC', 'SCHOOL_COUNSEL'] },
             { id: 'CED 562', code: 'CED 562', credits: 3, name: 'Addictions Counseling', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE' }, programs: ['CMHC'] },
             { id: 'CED 565', code: 'CED 565', credits: 3, name: 'Foundations of Professional School Counseling', cat: { ALL: 'COUNSELING', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['SCHOOL_COUNSEL'] },
-            { id: 'CED 566', code: 'CED 566', credits: 3, name: 'Multicultural Counseling', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP', CCP_PHD: 'CLINICAL_CORE' }, programs: ['CMHC', 'SCHOOL_COUNSEL', 'CCP_PHD'] },
+            { id: 'CED 566', code: 'CED 566', credits: 3, name: 'Multicultural Counseling', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['CMHC', 'SCHOOL_COUNSEL'] },
             { id: 'CED 569', code: 'CED 569', credits: 3, name: 'Child Counseling', cat: { ALL: 'COUNSELING', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['SCHOOL_COUNSEL'] },
             { id: 'CED 571', code: 'CED 571', credits: 3, name: 'Foundations of Clinical Mental Health', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE' }, programs: ['CMHC'] },
-            { id: 'CED 572', code: 'CED 572', credits: 3, name: 'Principles and Theories of Counseling', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP', CCP_PHD: 'CLINICAL_CORE' }, programs: ['CMHC', 'SCHOOL_COUNSEL', 'CCP_PHD'] },
-            { id: 'CED 574', code: 'CED 574', credits: 3, name: 'Group Counseling Theory and Process', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP', CCP_PHD: 'CLINICAL_CORE' }, programs: ['CMHC', 'SCHOOL_COUNSEL', 'CCP_PHD'] },
+            { id: 'CED 572', code: 'CED 572', credits: 3, name: 'Principles and Theories of Counseling', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['CMHC', 'SCHOOL_COUNSEL'] },
+            { id: 'CED 574', code: 'CED 574', credits: 3, name: 'Group Counseling Theory and Process', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['CMHC', 'SCHOOL_COUNSEL'] },
             { id: 'CED 582', code: 'CED 582', credits: 3, name: 'Data Driven School Counseling', cat: { ALL: 'COUNSELING', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['SCHOOL_COUNSEL'] },
-            { id: 'CED 584', code: 'CED 584', credits: 3, name: 'Seminar in Ethical and Legal Issues', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP', CCP_PHD: 'CLINICAL_CORE' }, programs: ['CMHC', 'SCHOOL_COUNSEL', 'CCP_PHD'] },
-            { id: 'CED 586', code: 'CED 586', credits: 3, name: 'Analysis of Counseling Process', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP', CCP_PHD: 'CLINICAL_CORE' }, programs: ['CMHC', 'SCHOOL_COUNSEL', 'CCP_PHD'] },
+            { id: 'CED 584', code: 'CED 584', credits: 3, name: 'Seminar in Ethical and Legal Issues', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['CMHC', 'SCHOOL_COUNSEL'] },
+            { id: 'CED 586', code: 'CED 586', credits: 3, name: 'Analysis of Counseling Process', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['CMHC', 'SCHOOL_COUNSEL'] },
             { id: 'CED 588', code: 'CED 588', credits: 3, name: 'Career Development and Placement', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['CMHC', 'SCHOOL_COUNSEL'] },
             { id: 'CED 591', code: 'CED 591', credits: 3, name: 'Advocacy, Collaboration, Consultation', cat: { ALL: 'COUNSELING', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['SCHOOL_COUNSEL'] },
             { id: 'CED 592', code: 'CED 592', credits: 3, name: 'Crisis and Trauma Counseling', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE' }, programs: ['CMHC'] },
-            { id: 'CED 576', code: 'CED 576', credits: 3, name: 'Supervised Practicum in Counseling', cat: { ALL: 'FIELD', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP', CCP_PHD: 'PRACTICUM' }, programs: ['CMHC', 'SCHOOL_COUNSEL', 'CCP_PHD'] },
+            { id: 'CED 576', code: 'CED 576', credits: 3, name: 'Supervised Practicum in Counseling', cat: { ALL: 'FIELD', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['CMHC', 'SCHOOL_COUNSEL'] },
             { id: 'CED 595', code: 'CED 595', credits: 6, name: 'Internship in School Counseling', cat: { ALL: 'FIELD', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['SCHOOL_COUNSEL'] },
             { id: 'CED 597', code: 'CED 597', credits: 6, name: 'Internship in Clinical Mental Health', cat: { ALL: 'FIELD', CMHC: 'MAJOR_CORE' }, programs: ['CMHC'] }
         ];
@@ -350,22 +350,14 @@
                 groups: {
                     PREREQ: { name: 'Prerequisites & Foundations', color: COLORS.blue },
                     INST_CORE: { name: 'Instructional Design Core', color: COLORS.green },
-                    RESEARCH: { name: 'Research & Evaluation (IDE)', color: COLORS.yellow },
-                    EDM_DIV: { name: 'Educational Media / Library Media', color: COLORS.purple },
+                    RESEARCH: { name: 'Instructional Design Research & Evaluation', color: COLORS.yellow },
+                    EDM_DIV: { name: 'Educational Media & Library Media', color: COLORS.purple },
                     COUNSELING: { name: 'Counseling Major Core', color: COLORS.pink },
                     FIELD: { name: 'Internship, Electives & Dissertation', color: COLORS.red }
                 }
             },
-            CCP_PHD: {
-                title: 'Clinical & Counseling Psychology Ph.D.',
-                groups: {
-                    CLINICAL_CORE: { name: 'Clinical Core', color: COLORS.pink },
-                    RESEARCH: { name: 'Research & Evaluation', color: COLORS.yellow },
-                    PRACTICUM: { name: 'Practicum & Field Training', color: COLORS.red }
-                }
-            },
             CMHC: {
-                title: 'Clinical Mental Health Counseling Groups',
+                title: 'Clinical Mental Health Counseling (M.S.)',
                 groups: {
                     MAJOR_CORE: { name: 'Major Professional Core', color: COLORS.pink },
                     REL_PROF: { name: 'Related Professional Courses', color: COLORS.yellow },
@@ -373,7 +365,7 @@
                 }
             },
             EDM_MS: {
-                title: 'Educational Media M.S. Course Groups',
+                title: 'Educational Media and Technology (M.S.)',
                 groups: {
                     EDM_CORE: { name: 'Educational Media Core (18 Hrs)', color: COLORS.orange },
                     ISD_CORE: { name: 'Instructional Design (3 Hrs)', color: COLORS.green },
@@ -382,7 +374,7 @@
                 }
             },
             HPI_CERT: {
-                title: 'HPI Certificate Course Groups',
+                title: 'Human Performance Improvement (Certificate)',
                 groups: {
                     CORE_COURSE: { name: 'Core Courses', color: COLORS.teal },
                     SUPP_CW: { name: 'Supporting Coursework', color: COLORS.blue },
@@ -390,13 +382,13 @@
                 }
             },
             IDD_CERT: {
-                title: 'IDD Certificate Course Groups',
+                title: 'Instructional Design and Development (Certificate)',
                 groups: {
                     CORE_COURSE: { name: 'Core Courses', color: COLORS.green }
                 }
             },
             IDD_MS: {
-                title: 'IDD M.S. Curriculum Groups',
+                title: 'Instructional Design and Development (M.S.)',
                 groups: {
                     CORE_COURSE: { name: 'Core Courses', color: COLORS.green },
                     ADD_REQ: { name: 'Additional Requirements', color: COLORS.yellow },
@@ -404,7 +396,7 @@
                 }
             },
             IDD_PHD: {
-                title: 'IDD Ph.D. Curriculum Groups',
+                title: 'Instructional Design and Development (Ph.D.)',
                 groups: {
                     INST_CORE: { name: 'Instructional Core', color: COLORS.green },
                     RESEARCH: { name: 'Research', color: COLORS.yellow },
@@ -413,22 +405,22 @@
                 }
             },
             LIB_MED: {
-                title: 'Library Media P-12 Course Groups',
+                title: 'Library Media P-12 (M.Ed. / Certificate)',
                 groups: {
                     DIV_SUPP: { name: 'Diversity and Support Courses', color: COLORS.blue },
                     EDM_CORE: { name: 'Educational Media Core', color: COLORS.orange },
-                    RES_EVAL: { name: 'Research and Evaluation', color: COLORS.green },
+                    RES_EVAL: { name: 'Instructional Design Research & Evaluation', color: COLORS.green },
                     ELECTIVE: { name: 'Advisor Approved Elective (500-599)', color: COLORS.teal },
                     INTERN: { name: 'Library Media Internships (A/B/C)', color: COLORS.red }
                 }
             },
             SCHOOL_COUNSEL: {
-                title: 'School Counseling M.Ed. Groups',
+                title: 'School Counseling (M.Ed.)',
                 groups: {
                     INST_SUPP: { name: 'Instructional Support', color: COLORS.pink },
                     ED_FOUND: { name: 'Educational Foundations', color: COLORS.blue },
-                    RES_EVAL: { name: 'Research and Evaluation', color: COLORS.yellow },
-                    ALSDE_PRE: { name: 'ALSDE Prerequisite', color: COLORS.orange }
+                    RES_EVAL: { name: 'Instructional Design Research & Evaluation', color: COLORS.yellow },
+                    ALSDE_PRE: { name: 'Alabama State Department of Education Prerequisite', color: COLORS.orange }
                 }
             }
         };
@@ -512,10 +504,10 @@
             });
         });
 
-        // Dynamic Filtering & Double Button Setup
+        // Dynamic Filtering & Interface Logic
         function filterMap() {
             const prog = document.getElementById('program-filter').value;
-            const progConfig = PROGRAM_CATEGORIES[prog] || PROGRAM_CATEGORIES.ALL;
+            const progConfig = PROGRAM_CATEGORIES[prog] || { title: 'Clinical and Counseling Psychology (Ph.D.)', groups: {} };
 
             // Update Resource Buttons Section
             const docContainer = document.getElementById('doc-buttons');
@@ -538,7 +530,7 @@
                 docContainer.appendChild(webBtn);
             }
 
-            // 2. Direct GitHub Download Button(s)
+            // 2. Direct Download Button(s)
             const docs = PROGRAM_DOCS[prog] || [];
             docs.forEach(doc => {
                 const downloadUrl = GITHUB_BASE_URL + doc.name;
@@ -558,15 +550,25 @@
             legendContainer.innerHTML = '';
 
             const visGroups = {};
-            Object.keys(progConfig.groups).forEach(gKey => {
-                const groupInfo = progConfig.groups[gKey];
-                visGroups[gKey] = { color: groupInfo.color };
+            if (progConfig.groups) {
+                Object.keys(progConfig.groups).forEach(gKey => {
+                    const groupInfo = progConfig.groups[gKey];
+                    visGroups[gKey] = { color: groupInfo.color };
 
+                    const item = document.createElement('div');
+                    item.className = 'legend-item';
+                    item.innerHTML = `<div class="color-box" style="background:${groupInfo.color.background}; border: 1px solid ${groupInfo.color.border}"></div> ${groupInfo.name}`;
+                    legendContainer.appendChild(item);
+                });
+            }
+
+            if (prog === 'CCP_PHD') {
                 const item = document.createElement('div');
-                item.className = 'legend-item';
-                item.innerHTML = `<div class="color-box" style="background:${groupInfo.color.background}; border: 1px solid ${groupInfo.color.border}"></div> ${groupInfo.name}`;
+                item.style.fontSize = '0.8rem';
+                item.style.color = '#94a3b8';
+                item.innerText = 'No CINS coursework network displayed for this program. Click "Official Website" above to learn more.';
                 legendContainer.appendChild(item);
-            });
+            }
 
             network.setOptions({ groups: visGroups });
 
@@ -593,6 +595,13 @@
             edgesDataSet.clear();
             nodesDataSet.add(formatted);
             edgesDataSet.add(filteredEdges);
+
+            const infoPanel = document.getElementById('info-content');
+            if (prog === 'CCP_PHD') {
+                infoPanel.innerHTML = 'Selected: Clinical and Counseling Psychology (Ph.D.)<br><br>This interdisciplinary program does not feature dedicated map courses in this visualizer.';
+            } else {
+                infoPanel.innerHTML = 'Click on any course circle to view full course title, credits, category group, and prerequisite relationships.';
+            }
         }
 
         // Search Node Logic
@@ -621,7 +630,7 @@
 
             const currentProg = document.getElementById('program-filter').value;
             const progConfig = PROGRAM_CATEGORIES[currentProg] || PROGRAM_CATEGORIES.ALL;
-            const categoryObj = progConfig.groups[node.currentCatKey] || { name: 'General Major Course' };
+            const categoryObj = (progConfig.groups && progConfig.groups[node.currentCatKey]) ? progConfig.groups[node.currentCatKey] : { name: 'General Major Course' };
 
             const infoPanel = document.getElementById('info-content');
             infoPanel.innerHTML = `
