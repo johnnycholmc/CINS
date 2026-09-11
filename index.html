@@ -83,7 +83,7 @@
             flex-wrap: wrap;
             gap: 8px;
         }
-        .btn-download {
+        .btn-link {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -99,10 +99,16 @@
             border: none;
             cursor: pointer;
         }
-        .btn-download:hover {
+        .btn-link:hover {
             background-color: #0369a1;
         }
-        .btn-download svg {
+        .btn-link.website {
+            background-color: #0d9488;
+        }
+        .btn-link.website:hover {
+            background-color: #0f766e;
+        }
+        .btn-link svg {
             width: 14px;
             height: 14px;
             fill: currentColor;
@@ -175,7 +181,7 @@
         </div>
 
         <div class="doc-section" id="doc-section">
-            <div class="doc-title" id="doc-title">Program Documents</div>
+            <div class="doc-title" id="doc-title">Program Resources</div>
             <div class="btn-container" id="doc-buttons"></div>
         </div>
 
@@ -201,6 +207,18 @@
         // Replace with your GitHub Username and Repository Name
         const GITHUB_BASE_URL = "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/main/";
 
+        // Program Web URLs
+        const PROGRAM_URLS = {
+            CMHC: "https://www.southalabama.edu/colleges/graduateschool/ccp/",
+            EDM_MS: "https://www.southalabama.edu/colleges/ceps/cins/emt-ms.html",
+            LIB_MED: "https://www.southalabama.edu/colleges/ceps/cins/edmedia-med.html",
+            SCHOOL_COUNSEL: "https://www.southalabama.edu/colleges/ceps/cins/counseling.html",
+            IDD_MS: "https://www.southalabama.edu/colleges/ceps/cins/idd/",
+            IDD_PHD: "https://www.southalabama.edu/colleges/ceps/cins/idd/",
+            IDD_CERT: "https://www.southalabama.edu/colleges/ceps/cins/idd/",
+            HPI_CERT: "https://www.southalabama.edu/colleges/ceps/cins/idd/"
+        };
+
         // Color Palette Definitions
         const COLORS = {
             blue:    { background: '#0284c7', border: '#38bdf8' },
@@ -213,7 +231,7 @@
             orange:  { background: '#ea580c', border: '#fb923c' }
         };
 
-        // Master Dataset of Courses with Updated Dynamic Category Mappings
+        // Master Dataset of Courses
         const rawNodes = [
             { id: 'EDM 510', code: 'EDM 510', credits: 3, name: 'Microcomputing Systems in Education', cat: { ALL: 'EDM_DIV', LIB_MED: 'EDM_CORE', EDM_MS: 'EDM_CORE' }, programs: ['EDM_MS', 'LIB_MED'] },
             { id: 'EDM 520', code: 'EDM 520', credits: 3, name: 'Computer Applications in Education', cat: { ALL: 'EDM_DIV', EDM_MS: 'EDM_CORE' }, programs: ['EDM_MS'] },
@@ -279,7 +297,7 @@
             { id: 'CED 597', code: 'CED 597', credits: 6, name: 'Internship in Clinical Mental Health', cat: { ALL: 'FIELD', CMHC: 'MAJOR_CORE' }, programs: ['CMHC'] }
         ];
 
-        // Documents Mapping Config per Program
+        // Documents Mapping Config
         const PROGRAM_DOCS = {
             ALL: [
                 { name: 'cedscha.pdf', label: 'cedscha' },
@@ -403,7 +421,7 @@
             }
         };
 
-        // Explicit Connections & Prerequisites (Arrows)
+        // Explicit Connections & Prerequisites
         const rawEdges = [
             { from: 'EDM 510', to: 'EDM 584', label: 'Recommended' },
             { from: 'EDM 520', to: 'ISD 581', label: 'Recommended' },
@@ -482,32 +500,44 @@
             });
         });
 
-        // Dynamic Filtering, Legend & Document Button Updating
+        // Dynamic Filtering & Double Button Setup (Website & GitHub Download)
         function filterMap() {
             const prog = document.getElementById('program-filter').value;
             const progConfig = PROGRAM_CATEGORIES[prog] || PROGRAM_CATEGORIES.ALL;
 
-            // Update Preview Buttons Section
+            // Update Resource Buttons Section
             const docContainer = document.getElementById('doc-buttons');
             const docTitle = document.getElementById('doc-title');
             docContainer.innerHTML = '';
             
+            docTitle.innerText = prog === 'ALL' ? 'All Course Resources' : 'Program Resources';
+
+            const webIcon = `<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>`;
+            const downloadIcon = `<svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>`;
+
+            // 1. Web Link Button
+            if (PROGRAM_URLS[prog]) {
+                const webBtn = document.createElement('a');
+                webBtn.className = 'btn-link website';
+                webBtn.href = PROGRAM_URLS[prog];
+                webBtn.target = '_blank';
+                webBtn.title = 'Visit Official Program Website';
+                webBtn.innerHTML = `${webIcon} Official Website`;
+                docContainer.appendChild(webBtn);
+            }
+
+            // 2. Direct GitHub Download Button(s)
             const docs = PROGRAM_DOCS[prog] || [];
-            docTitle.innerText = prog === 'ALL' ? 'All Course Documents' : 'Program Documents';
-
-            const svgIcon = `<svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>`;
-
             docs.forEach(doc => {
-                const rawUrl = GITHUB_BASE_URL + doc.name;
-                const previewUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(rawUrl)}`;
+                const downloadUrl = GITHUB_BASE_URL + doc.name;
                 
-                const btn = document.createElement('a');
-                btn.className = 'btn-download';
-                btn.href = previewUrl;
-                btn.target = '_blank';
-                btn.title = `Preview ${doc.name} online`;
-                btn.innerHTML = `${svgIcon} Preview ${doc.label}`;
-                docContainer.appendChild(btn);
+                const docBtn = document.createElement('a');
+                docBtn.className = 'btn-link';
+                docBtn.href = downloadUrl;
+                docBtn.download = doc.name;
+                docBtn.title = `Download ${doc.name} directly`;
+                docBtn.innerHTML = `${downloadIcon} Doc: ${doc.label}`;
+                docContainer.appendChild(docBtn);
             });
 
             // Update Sidebar Legend
