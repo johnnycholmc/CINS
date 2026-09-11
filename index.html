@@ -169,6 +169,7 @@
             <label for="program-filter">Filter by Program</label>
             <select id="program-filter" onchange="filterMap()">
                 <option value="ALL">Show All CINS Programs</option>
+                <option value="CCP_PHD">Clinical & Counseling Psychology (Ph.D.)</option>
                 <option value="CMHC">Clinical Mental Health Counseling (M.S.)</option>
                 <option value="EDM_MS">Educational Media M.S.</option>
                 <option value="HPI_CERT">HPI Certificate</option>
@@ -209,14 +210,16 @@
 
         // Program Web URLs
         const PROGRAM_URLS = {
-            CMHC: "https://www.southalabama.edu/colleges/graduateschool/ccp/",
+            ALL: "https://www.southalabama.edu/colleges/ceps/cins/",
+            CCP_PHD: "https://www.southalabama.edu/colleges/graduateschool/ccp/",
+            CMHC: "https://www.southalabama.edu/colleges/ceps/cins/mentalhealth-counseling.html",
             EDM_MS: "https://www.southalabama.edu/colleges/ceps/cins/emt-ms.html",
             LIB_MED: "https://www.southalabama.edu/colleges/ceps/cins/edmedia-med.html",
-            SCHOOL_COUNSEL: "https://www.southalabama.edu/colleges/ceps/cins/counseling.html",
+            SCHOOL_COUNSEL: "https://www.southalabama.edu/colleges/ceps/cins/school-counseling.html",
             IDD_MS: "https://www.southalabama.edu/colleges/ceps/cins/idd/",
             IDD_PHD: "https://www.southalabama.edu/colleges/ceps/cins/idd/",
             IDD_CERT: "https://www.southalabama.edu/colleges/ceps/cins/idd/",
-            HPI_CERT: "https://www.southalabama.edu/colleges/ceps/cins/idd/"
+            HPI_CERT: "https://www.southalabama.edu/colleges/ceps/cins/hpi-cert.html"
         };
 
         // Color Palette Definitions
@@ -247,12 +250,12 @@
             { id: 'EDF 515', code: 'EDF 515', credits: 3, name: 'Multicultural Education', cat: { ALL: 'EDM_DIV', LIB_MED: 'DIV_SUPP', SCHOOL_COUNSEL: 'ED_FOUND' }, programs: ['LIB_MED', 'SCHOOL_COUNSEL'] },
             { id: 'EPY 502', code: 'EPY 502', credits: 3, name: 'Psychology of Learning and Learners', cat: { ALL: 'PREREQ', LIB_MED: 'DIV_SUPP', EDM_MS: 'ED_PSYCH', IDD_MS: 'ADD_REQ', IDD_PHD: 'SUPP_CW', SCHOOL_COUNSEL: 'ED_FOUND' }, programs: ['EDM_MS', 'IDD_MS', 'IDD_PHD', 'LIB_MED', 'SCHOOL_COUNSEL'] },
             { id: 'SPE 500', code: 'SPE 500', credits: 3, name: 'Nature and Needs of Exceptional Children', cat: { ALL: 'EDM_DIV', SCHOOL_COUNSEL: 'ALSDE_PRE' }, programs: ['SCHOOL_COUNSEL'] },
-            { id: 'IDE 510', code: 'IDE 510', credits: 3, name: 'Educational Research and Evaluation', cat: { ALL: 'RESEARCH', LIB_MED: 'RES_EVAL', IDD_MS: 'ADD_REQ', IDD_PHD: 'RESEARCH', CMHC: 'REL_PROF', SCHOOL_COUNSEL: 'RES_EVAL' }, programs: ['IDD_MS', 'IDD_PHD', 'LIB_MED', 'CMHC', 'SCHOOL_COUNSEL'] },
-            { id: 'IDE 620', code: 'IDE 620', credits: 3, name: 'Quantitative Methods I', cat: { ALL: 'RESEARCH', IDD_PHD: 'RESEARCH' }, programs: ['IDD_PHD'] },
-            { id: 'IDE 621', code: 'IDE 621', credits: 3, name: 'Quantitative Methods II', cat: { ALL: 'RESEARCH', IDD_PHD: 'RESEARCH' }, programs: ['IDD_PHD'] },
-            { id: 'IDE 630', code: 'IDE 630', credits: 3, name: 'Advanced Research Design', cat: { ALL: 'RESEARCH', IDD_PHD: 'RESEARCH' }, programs: ['IDD_PHD'] },
-            { id: 'IDE 631', code: 'IDE 631', credits: 3, name: 'Qualitative Research', cat: { ALL: 'RESEARCH', IDD_PHD: 'RESEARCH' }, programs: ['IDD_PHD'] },
-            { id: 'IDE 635', code: 'IDE 635', credits: 3, name: 'Advanced Measurement and Evaluation', cat: { ALL: 'RESEARCH', IDD_PHD: 'RESEARCH' }, programs: ['IDD_PHD'] },
+            { id: 'IDE 510', code: 'IDE 510', credits: 3, name: 'Educational Research and Evaluation', cat: { ALL: 'RESEARCH', LIB_MED: 'RES_EVAL', IDD_MS: 'ADD_REQ', IDD_PHD: 'RESEARCH', CMHC: 'REL_PROF', SCHOOL_COUNSEL: 'RES_EVAL', CCP_PHD: 'RESEARCH' }, programs: ['IDD_MS', 'IDD_PHD', 'LIB_MED', 'CMHC', 'SCHOOL_COUNSEL', 'CCP_PHD'] },
+            { id: 'IDE 620', code: 'IDE 620', credits: 3, name: 'Quantitative Methods I', cat: { ALL: 'RESEARCH', IDD_PHD: 'RESEARCH', CCP_PHD: 'RESEARCH' }, programs: ['IDD_PHD', 'CCP_PHD'] },
+            { id: 'IDE 621', code: 'IDE 621', credits: 3, name: 'Quantitative Methods II', cat: { ALL: 'RESEARCH', IDD_PHD: 'RESEARCH', CCP_PHD: 'RESEARCH' }, programs: ['IDD_PHD', 'CCP_PHD'] },
+            { id: 'IDE 630', code: 'IDE 630', credits: 3, name: 'Advanced Research Design', cat: { ALL: 'RESEARCH', IDD_PHD: 'RESEARCH', CCP_PHD: 'RESEARCH' }, programs: ['IDD_PHD', 'CCP_PHD'] },
+            { id: 'IDE 631', code: 'IDE 631', credits: 3, name: 'Qualitative Research', cat: { ALL: 'RESEARCH', IDD_PHD: 'RESEARCH', CCP_PHD: 'RESEARCH' }, programs: ['IDD_PHD', 'CCP_PHD'] },
+            { id: 'IDE 635', code: 'IDE 635', credits: 3, name: 'Advanced Measurement and Evaluation', cat: { ALL: 'RESEARCH', IDD_PHD: 'RESEARCH', CCP_PHD: 'RESEARCH' }, programs: ['IDD_PHD', 'CCP_PHD'] },
             { id: 'IDE 660', code: 'IDE 660', credits: 3, name: 'Program Research and Evaluation', cat: { ALL: 'RESEARCH', HPI_CERT: 'SUPP_CW', IDD_MS: 'ADD_REQ', IDD_PHD: 'RESEARCH' }, programs: ['HPI_CERT', 'IDD_MS', 'IDD_PHD'] },
             { id: 'ISD 581', code: 'ISD 581', credits: 3, name: 'Hypermedia Tools', cat: { ALL: 'INST_CORE', EDM_MS: 'ISD_CORE', IDD_MS: 'CORE_COURSE' }, programs: ['EDM_MS', 'IDD_MS'] },
             { id: 'ISD 610', code: 'ISD 610', credits: 3, name: 'Trends and Issues in IDD', cat: { ALL: 'INST_CORE', IDD_MS: 'CORE_COURSE', IDD_PHD: 'INST_CORE' }, programs: ['IDD_MS', 'IDD_PHD'] },
@@ -278,21 +281,21 @@
             { id: 'ISD 799', code: 'ISD 799', credits: 9, name: 'Research / Dissertation', cat: { ALL: 'FIELD', IDD_PHD: 'DISSERTATION' }, programs: ['IDD_PHD'] },
             { id: 'EPY 521', code: 'EPY 521', credits: 3, name: 'Human Development and Behavior', cat: { ALL: 'COUNSELING', CMHC: 'REL_PROF', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['CMHC', 'SCHOOL_COUNSEL'] },
             { id: 'EPY 555', code: 'EPY 555', credits: 3, name: 'Tests, Measurement and Evaluation', cat: { ALL: 'COUNSELING', CMHC: 'REL_PROF', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['CMHC', 'SCHOOL_COUNSEL'] },
-            { id: 'CED 560', code: 'CED 560', credits: 3, name: 'Diagnostic and Treatment Planning', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['CMHC', 'SCHOOL_COUNSEL'] },
+            { id: 'CED 560', code: 'CED 560', credits: 3, name: 'Diagnostic and Treatment Planning', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP', CCP_PHD: 'CLINICAL_CORE' }, programs: ['CMHC', 'SCHOOL_COUNSEL', 'CCP_PHD'] },
             { id: 'CED 562', code: 'CED 562', credits: 3, name: 'Addictions Counseling', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE' }, programs: ['CMHC'] },
             { id: 'CED 565', code: 'CED 565', credits: 3, name: 'Foundations of Professional School Counseling', cat: { ALL: 'COUNSELING', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['SCHOOL_COUNSEL'] },
-            { id: 'CED 566', code: 'CED 566', credits: 3, name: 'Multicultural Counseling', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['CMHC', 'SCHOOL_COUNSEL'] },
+            { id: 'CED 566', code: 'CED 566', credits: 3, name: 'Multicultural Counseling', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP', CCP_PHD: 'CLINICAL_CORE' }, programs: ['CMHC', 'SCHOOL_COUNSEL', 'CCP_PHD'] },
             { id: 'CED 569', code: 'CED 569', credits: 3, name: 'Child Counseling', cat: { ALL: 'COUNSELING', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['SCHOOL_COUNSEL'] },
             { id: 'CED 571', code: 'CED 571', credits: 3, name: 'Foundations of Clinical Mental Health', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE' }, programs: ['CMHC'] },
-            { id: 'CED 572', code: 'CED 572', credits: 3, name: 'Principles and Theories of Counseling', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['CMHC', 'SCHOOL_COUNSEL'] },
-            { id: 'CED 574', code: 'CED 574', credits: 3, name: 'Group Counseling Theory and Process', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['CMHC', 'SCHOOL_COUNSEL'] },
+            { id: 'CED 572', code: 'CED 572', credits: 3, name: 'Principles and Theories of Counseling', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP', CCP_PHD: 'CLINICAL_CORE' }, programs: ['CMHC', 'SCHOOL_COUNSEL', 'CCP_PHD'] },
+            { id: 'CED 574', code: 'CED 574', credits: 3, name: 'Group Counseling Theory and Process', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP', CCP_PHD: 'CLINICAL_CORE' }, programs: ['CMHC', 'SCHOOL_COUNSEL', 'CCP_PHD'] },
             { id: 'CED 582', code: 'CED 582', credits: 3, name: 'Data Driven School Counseling', cat: { ALL: 'COUNSELING', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['SCHOOL_COUNSEL'] },
-            { id: 'CED 584', code: 'CED 584', credits: 3, name: 'Seminar in Ethical and Legal Issues', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['CMHC', 'SCHOOL_COUNSEL'] },
-            { id: 'CED 586', code: 'CED 586', credits: 3, name: 'Analysis of Counseling Process', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['CMHC', 'SCHOOL_COUNSEL'] },
+            { id: 'CED 584', code: 'CED 584', credits: 3, name: 'Seminar in Ethical and Legal Issues', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP', CCP_PHD: 'CLINICAL_CORE' }, programs: ['CMHC', 'SCHOOL_COUNSEL', 'CCP_PHD'] },
+            { id: 'CED 586', code: 'CED 586', credits: 3, name: 'Analysis of Counseling Process', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP', CCP_PHD: 'CLINICAL_CORE' }, programs: ['CMHC', 'SCHOOL_COUNSEL', 'CCP_PHD'] },
             { id: 'CED 588', code: 'CED 588', credits: 3, name: 'Career Development and Placement', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['CMHC', 'SCHOOL_COUNSEL'] },
             { id: 'CED 591', code: 'CED 591', credits: 3, name: 'Advocacy, Collaboration, Consultation', cat: { ALL: 'COUNSELING', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['SCHOOL_COUNSEL'] },
             { id: 'CED 592', code: 'CED 592', credits: 3, name: 'Crisis and Trauma Counseling', cat: { ALL: 'COUNSELING', CMHC: 'MAJOR_CORE' }, programs: ['CMHC'] },
-            { id: 'CED 576', code: 'CED 576', credits: 3, name: 'Supervised Practicum in Counseling', cat: { ALL: 'FIELD', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['CMHC', 'SCHOOL_COUNSEL'] },
+            { id: 'CED 576', code: 'CED 576', credits: 3, name: 'Supervised Practicum in Counseling', cat: { ALL: 'FIELD', CMHC: 'MAJOR_CORE', SCHOOL_COUNSEL: 'INST_SUPP', CCP_PHD: 'PRACTICUM' }, programs: ['CMHC', 'SCHOOL_COUNSEL', 'CCP_PHD'] },
             { id: 'CED 595', code: 'CED 595', credits: 6, name: 'Internship in School Counseling', cat: { ALL: 'FIELD', SCHOOL_COUNSEL: 'INST_SUPP' }, programs: ['SCHOOL_COUNSEL'] },
             { id: 'CED 597', code: 'CED 597', credits: 6, name: 'Internship in Clinical Mental Health', cat: { ALL: 'FIELD', CMHC: 'MAJOR_CORE' }, programs: ['CMHC'] }
         ];
@@ -311,6 +314,7 @@
                 { name: 'lm.pdf', label: 'lm' },
                 { name: 'lmcert.pdf', label: 'lmcert' }
             ],
+            CCP_PHD: [],
             CMHC: [
                 { name: 'cmhcms.pdf', label: 'cmhcms' }
             ],
@@ -350,6 +354,14 @@
                     EDM_DIV: { name: 'Educational Media / Library Media', color: COLORS.purple },
                     COUNSELING: { name: 'Counseling Major Core', color: COLORS.pink },
                     FIELD: { name: 'Internship, Electives & Dissertation', color: COLORS.red }
+                }
+            },
+            CCP_PHD: {
+                title: 'Clinical & Counseling Psychology Ph.D.',
+                groups: {
+                    CLINICAL_CORE: { name: 'Clinical Core', color: COLORS.pink },
+                    RESEARCH: { name: 'Research & Evaluation', color: COLORS.yellow },
+                    PRACTICUM: { name: 'Practicum & Field Training', color: COLORS.red }
                 }
             },
             CMHC: {
@@ -500,7 +512,7 @@
             });
         });
 
-        // Dynamic Filtering & Double Button Setup (Website & GitHub Download)
+        // Dynamic Filtering & Double Button Setup
         function filterMap() {
             const prog = document.getElementById('program-filter').value;
             const progConfig = PROGRAM_CATEGORIES[prog] || PROGRAM_CATEGORIES.ALL;
