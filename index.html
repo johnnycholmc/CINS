@@ -170,11 +170,11 @@
             <p class="subtitle">Dept. of Counseling & Instructional Sciences</p>
         </div>
 
-        <!-- Filter Dropdown preserving the original order -->
+        <!-- Filter Dropdown preserved in original order -->
         <div class="filter-group">
             <label for="program-filter">Filter by Program</label>
             <select id="program-filter" onchange="filterMap()">
-                <option value="ALL">Show All CINS Programs</option>
+                <option value="ALL" selected>Show All CINS Programs</option>
                 <option value="CCP_PHD">Clinical and Counseling Psychology (Ph.D.)</option>
                 <option value="CMHC">Clinical Mental Health Counseling (M.S.)</option>
                 <option value="EDM_MS">Educational Media and Technology (M.S.)</option>
@@ -657,7 +657,7 @@
             `;
         }
 
-        // URL Reader Initialization: Falls back to LIB_MED if no valid parameter is given
+        // URL Reader: Defaults to ALL, but loads explicit program parameter if provided in URL
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const initialProgram = urlParams.get('program');
@@ -665,7 +665,7 @@
             if (initialProgram && PROGRAM_CATEGORIES[initialProgram]) {
                 filterMap(initialProgram);
             } else {
-                filterMap('LIB_MED'); // Directs default page load to Library Media P-12
+                filterMap('ALL'); // Default load view: Show All CINS Programs
             }
         });
     </script>
