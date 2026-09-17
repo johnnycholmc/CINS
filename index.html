@@ -172,7 +172,7 @@
 
         <div class="filter-group">
             <label for="program-filter">Filter by Program</label>
-            <select id="program-filter" onchange="filterMap()">    
+            <select id="program-filter" onchange="filterMap()">
                 <option value="ALL">Show All CINS Programs</option>
                 <option value="CCP_PHD">Clinical and Counseling Psychology (Ph.D.)</option>
                 <option value="CMHC">Clinical Mental Health Counseling (M.S.)</option>
@@ -211,7 +211,7 @@
 
     <script type="text/javascript">
         // Replace with your GitHub Username and Repository Name
-        const GITHUB_BASE_URL = "https://raw.githubusercontent.com/johnnycholmc/CINS/main/";
+        const GITHUB_BASE_URL = "https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/main/";
 
         // Program Web URLs
         const PROGRAM_URLS = {
@@ -227,7 +227,7 @@
             HPI_CERT: "https://www.southalabama.edu/colleges/ceps/cins/hpi-cert.html"
         };
 
-        // Option 1 Novice-Friendly Document Mapping
+        // Novice-Friendly Document Mapping
         const PROGRAM_DOCS = {
             ALL: [
                 { name: 'cedscha.pdf', label: 'School Counseling Checklist (M.Ed.)' },
@@ -286,7 +286,7 @@
         const rawNodes = [
             { id: 'EDM 510', code: 'EDM 510', credits: 3, name: 'Microcomputing Systems in Education', cat: { ALL: 'EDM_DIV', LIB_MED: 'EDM_CORE', EDM_MS: 'EDM_CORE' }, programs: ['EDM_MS', 'LIB_MED'] },
             { id: 'EDM 520', code: 'EDM 520', credits: 3, name: 'Computer Applications in Education', cat: { ALL: 'EDM_DIV', EDM_MS: 'EDM_CORE' }, programs: ['EDM_MS'] },
-            { id: 'EDM 530', code: 'EDM 530', credits: 3, name: 'Workshop for Educational Media', cat: { ALL: 'EDM_DIV', LIB_MED: 'EDM_CORE' }, programs: ['LIB_MED'] },
+            { id: 'EDM 530', code: 'EDM 530', credits: 3, name: 'Workshop for Ed Media', cat: { ALL: 'EDM_DIV', LIB_MED: 'EDM_CORE' }, programs: ['LIB_MED'] },
             { id: 'EDM 540', code: 'EDM 540', credits: 3, name: 'Curriculum Media for Children and Youth', cat: { ALL: 'EDM_DIV', LIB_MED: 'EDM_CORE' }, programs: ['LIB_MED'] },
             { id: 'EDM 580', code: 'EDM 580', credits: 3, name: 'Information Literacy', cat: { ALL: 'EDM_DIV', LIB_MED: 'EDM_CORE', EDM_MS: 'EDM_CORE' }, programs: ['EDM_MS', 'LIB_MED'] },
             { id: 'EDM 581', code: 'EDM 581', credits: 3, name: 'Media Center Management', cat: { ALL: 'EDM_DIV', LIB_MED: 'EDM_CORE' }, programs: ['LIB_MED'] },
@@ -432,6 +432,12 @@
 
         // Explicit Connections & Prerequisites
         const rawEdges = [
+            // Library Media Specific Prerequisites
+            { from: 'EDM 581', to: 'EDM 595A', label: 'Prereq' },
+            { from: 'EDM 580', to: 'EDM 595B', label: 'Prereq' },
+            { from: 'EDM 583', to: 'EDM 595C', label: 'Prereq' },
+
+            // General & Departmental Connections
             { from: 'EDM 510', to: 'EDM 584', label: 'Recommended' },
             { from: 'EDM 520', to: 'ISD 581', label: 'Recommended' },
             { from: 'EPY 502', to: 'EPY 602', label: 'Prereq' },
