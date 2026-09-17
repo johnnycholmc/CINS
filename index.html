@@ -516,7 +516,10 @@
         });
 
         // Dynamic Filtering & Interface Logic
-        function filterMap() {
+        function filterMap(forcedProgram) {
+            if (forcedProgram) {
+                document.getElementById('program-filter').value = forcedProgram;
+            }
             const prog = document.getElementById('program-filter').value;
             const progConfig = PROGRAM_CATEGORIES[prog] || { title: 'Clinical and Counseling Psychology (Ph.D.)', groups: {} };
 
@@ -653,8 +656,17 @@
             `;
         }
 
-        // Initialize on Load
-        filterMap();
+        // Smart Initialization on Load (Handles URL query parameter e.g., ?program=LIB_MED)
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const initialProgram = urlParams.get('program');
+
+            if (initialProgram && PROGRAM_CATEGORIES[initialProgram]) {
+                filterMap(initialProgram);
+            } else {
+                filterMap('ALL');
+            }
+        });
     </script>
 </body>
 </html>
